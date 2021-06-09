@@ -5,7 +5,7 @@ namespace Deployer;
 desc('Enable allow symlink config in Magento Panel');
 task('magento:config', function () {
     if (test("[ -f {{release_path}}{{magento_dir}}app/etc/env.php ]")) {
-     //   run("cd {{release_path}}{{magento_dir}} && {{php}} {{magerun}} cache:enable {{magerun_params}} {{verbose}}");
+        run("cd {{release_path}}{{magento_dir}} && {{php}} {{magerun}} cache:enable {{magerun_params}} {{verbose}}");
         run("cd {{release_path}}{{magento_dir}} && {{php}} {{magerun}} config:store:set dev/template/allow_symlink 1 {{magerun_params}} {{verbose}}");
         if (get('is_production')) {
             run("cd {{release_path}}{{magento_dir}} && {{php}} {{magerun}} config:store:set design/search_engine_robots/default_robots INDEX,FOLLOW {{magerun_params}} {{verbose}}");
